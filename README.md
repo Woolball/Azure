@@ -6,13 +6,13 @@ Azure is a minimal theme for [Ghost](https://github.com/TryGhost/Ghost) focused 
 
 ## Installation
 
-1. [Download the theme ZIP file](https://github.com/Woolball/Azure/dist/main.zip)
-2. Log into Ghost and navigate to the `Design` settings
-3. Upload the downloaded ZIP file
+1. [Download the theme ZIP file](https://github.com/Woolball/Azure/raw/main/dist/azure.zip)
+2. Log into Ghost and navigate to the `Theme` settings
+3. Change theme by uploading the downloaded ZIP file
 
 ## Usage
 
-Customize the theme through the following variables:
+Customize the theme by navigating to `Design & branding` through the following variables:
 
 - **Navigation**
   - Layout configuration
