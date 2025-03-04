@@ -1,0 +1,939 @@
+/* ===================================================
+   Imports
+=================================================== */
+@import "@tryghost/shared-theme-assets/assets/css/v1/screen.css";
+@import "fonts.css";
+
+/* ===================================================
+   CSS Variables & Global Settings
+=================================================== */
+:root {
+    --font-sans: Manrope, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+    --font-serif: Libre Baskerville, Georgia, Times, serif;
+    --font-mono: JetBrains Mono, Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;
+    --color-darker-gray: rgba(0, 0, 0, 0.9);
+    --color-primary-text: var(--color-darker-gray);
+    --color-secondary-text-dark: rgba(0, 0, 0, 0.64);
+    --color-secondary-text-light: rgba(255, 255, 255, 0.64);
+    --color-secondary-text: var(--color-secondary-text-dark);
+    --color-border: rgba(0, 0, 0, 0.16);
+    --gap: clamp(30px, 2.2rem + 2.4vw, 64px);
+    --head-nav-gap: 32px;
+    --container-width: 1140px;
+    --max-article-width: 700px;
+    --content-font-size: clamp(1.7rem, 0.38vw + 1.4rem, 2rem);
+    --header-spacing: clamp(4.8rem, 4rem + 2.5vw, 8rem);
+}
+
+:root.has-light-text {
+    --color-lighter-gray: rgba(0, 0, 0, 0.1);
+    --color-darker-gray: #fff;
+    --color-secondary-text: var(--color-secondary-text-light);
+    --color-border: rgba(255, 255, 255, 0.2);
+}
+
+/* ===================================================
+   Global Base Styles
+=================================================== */
+body {
+    background-color: var(--background-color);
+}
+
+.gh-main {
+    padding-top: clamp(4.8rem, 4rem + 2.5vw, 8rem);
+    padding-bottom: clamp(4.8rem, 4rem + 2.5vw, 8rem);
+}
+
+.home-template .gh-main {
+    padding-top: clamp(1.2rem, 1rem + 0.625vw, 2rem);
+    padding-bottom: clamp(1.2rem, 1rem + 0.625vw, 2rem);
+}
+
+hr {
+    background-color: transparent;
+}
+
+/* ===================================================
+   Images & Utility Classes
+=================================================== */
+img {
+    border-radius: 4px;
+    border: 1px solid var(--color-border);
+}
+
+.bi {
+    color: var(--ghost-accent-color, #ff5700);
+}
+
+/* ===================================================
+   Grid & Layout
+=================================================== */
+.gh-canvas {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+}
+
+/* Default grid placement for Ghost content */
+.gh-canvas > *,
+.page-template .no-image :is(.gh-article-title, .gh-article-excerpt) {
+    grid-column: 4 / span 6;
+}
+
+.gh-canvas > .kg-width-wide {
+    grid-column: 4 / span 9;
+}
+
+.gh-canvas > .kg-width-full,
+.gh-canvas > .kg-gallery-card.kg-width-wide {
+    position: relative;
+    z-index: 20;
+    grid-column: 1 / span 12;
+    transform: translate3d(0, 0, 0);
+}
+
+/* ===================================================
+   Header Styling
+=================================================== */
+.gh-head-logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.gh-head {
+    font-size: 1.6rem;
+    background-color: transparent;
+}
+
+.gh-head-logo {
+    font-weight: 800;
+}
+
+.gh-head-logo img {
+    max-height: 40px;
+    border: none;
+}
+
+.gh-head-menu,
+.gh-head-link {
+    font-weight: 700;
+}
+
+.is-head-stacked .gh-head-menu::before,
+.is-head-stacked .gh-head-menu::after {
+    background-color: var(--color-border);
+}
+
+.gh-head-menu a {
+    color: inherit;
+}
+
+@media (max-width: 991px) {
+    .is-head-open:not(.is-head-brand):not(.is-head-dark):not(.is-head-transparent) :is(#gh-head, #gh-head .gh-head-actions) {
+        background-color: var(--background-color);
+    }
+}
+
+/* ===================================================
+   About Section
+=================================================== */
+.gh-about {
+    margin-bottom: 40px;
+}
+
+.gh-about-content {
+    word-break: break-word;
+}
+
+.gh-about-image {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08);
+    border: none;
+}
+
+@media (max-width: 767px) {
+    .gh-about-image {
+        box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.06);
+    }
+}
+
+.gh-about-primary {
+    max-width: 900px;
+    font-size: clamp(3rem, 2.2rem + 2vw, 5rem);
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.has-serif-font:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-about-primary {
+    font-family: var(--gh-font-heading, var(--font-serif));
+}
+
+.has-mono-font:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-about-primary {
+    font-family: var(--gh-font-heading, var(--font-mono));
+}
+
+.gh-about-primary a {
+    text-decoration: underline;
+}
+
+.gh-about-secondary {
+    max-width: 720px;
+    font-size: clamp(2.2rem, 0.5vw + 2rem, 2.8rem);
+    font-weight: 500;
+    letter-spacing: -0.008em;
+}
+
+.has-serif-font:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-about-secondary {
+    font-family: var(--gh-font-body, var(--font-serif));
+}
+
+.has-mono-font:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-about-secondary {
+    font-family: var(--gh-font-body, var(--font-mono));
+}
+
+.gh-about-primary + .gh-about-secondary {
+    max-width: 640px;
+    margin-top: 20px;
+    font-size: clamp(2rem, 0.36vw + 1.83rem, 2.4rem);
+    font-weight: 450;
+}
+
+.gh-about-secondary a {
+    text-decoration: underline;
+}
+
+/* ===================================================
+   CTA Buttons
+=================================================== */
+.gh-header-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.gh-btn {
+    font-weight: 600;
+    border-radius: 6px;
+}
+
+.gh-header-buttons .gh-secondary-btn {
+    background-color: transparent;
+    color: var(--color-primary-text);
+    border: 1px solid var(--color-primary-text);
+}
+
+/* Responsive CTA adjustment on small screens */
+@media (max-width: 767px) {
+    .gh-ctas {
+        flex-direction: column;
+    }
+    .gh-about-image {
+        aspect-ratio: 16/9;
+    }
+}
+
+/* ===================================================
+   Side-by-Side About Section
+=================================================== */
+.has-side-about .gh-about {
+    margin-top: 48px;
+}
+
+.has-side-about .gh-about.no-image {
+    margin-top: 80px;
+    margin-bottom: 48px;
+}
+
+.has-side-about .gh-about-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(4rem, 0.0842rem + 3.9474vw, 6.4rem);
+}
+
+.has-side-about .gh-about.no-image .gh-about-inner {
+    grid-template-columns: 1fr;
+}
+
+@media (max-width: 840px) {
+    .has-side-about .gh-about-inner {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 64px;
+    }
+}
+
+/* ===================================================
+   Post Card Styling
+=================================================== */
+.gh-card-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.gh-card-title {
+    font-weight: 800;
+    word-break: break-word;
+}
+
+.has-serif-font:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-card-title {
+    font-family: var(--gh-font-heading, var(--font-serif));
+}
+
+.has-mono-font:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-card-title {
+    font-family: var(--gh-font-heading, var(--font-mono));
+}
+
+.gh-card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+    margin-top: 16px;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--color-secondary-text);
+}
+
+.gh-card-meta > * {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.gh-card-meta > * + *:not(script):not(.gh-card-access)::before {
+    width: 2px;
+    height: 2px;
+    content: "";
+    background-color: currentColor;
+    border-radius: 50%;
+}
+
+.gh-card-access {
+    padding: 0 10px 0 8px;
+    margin-left: 4px;
+    background-color: var(--color-border);
+    border-radius: 40px;
+}
+
+.gh-card-access svg {
+    margin-right: -5px;
+}
+
+/* ===================================================
+   Article Meta Styling
+=================================================== */
+.gh-article-meta {
+    top: 0;
+    bottom: 0;
+    z-index: 10;
+    grid-row-start: 1;
+    width: 100%;
+    margin: 0 !important;
+}
+
+.gh-article-meta-inner {
+    position: sticky;
+    top: 48px;
+    display: flex;
+    flex-direction: column;
+}
+
+.gh-article-meta .gh-author-image-list {
+    display: flex;
+    margin-bottom: 12px;
+    margin-left: -2px;
+}
+
+.gh-article-meta .gh-author-image {
+    display: block;
+    width: 72px;
+    height: 72px;
+    margin-bottom: 0;
+    border: 2px solid var(--color-white);
+}
+
+.gh-article-meta .gh-author-icon {
+    background-color: var(--color-light-gray);
+}
+
+.gh-article-meta .gh-author-image-list .gh-author-image + .gh-author-image {
+    margin-left: -20px;
+}
+
+.gh-article-meta .gh-author-image-list .gh-author-image:nth-child(1) {
+    z-index: 30;
+}
+
+.gh-article-meta .gh-author-image-list .gh-author-image:nth-child(2) {
+    z-index: 20;
+}
+
+.gh-article-meta .gh-author-image-list .gh-author-image:nth-child(3) {
+    z-index: 10;
+}
+
+.gh-article-meta .gh-author-name-list {
+    margin-bottom: -2px;
+    line-height: 1.35;
+}
+
+.gh-article-meta .gh-author-name-list a {
+    font-size: 1.9rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    text-decoration: none;
+    color: var(--color-darker-gray);
+}
+
+.gh-article-date {
+    margin-top: 4px;
+    font-size: 1.4rem;
+    color: var(--color-secondary-text);
+}
+
+.gh-article-tag {
+    display: inline-block;
+    width: fit-content;
+    padding: 2px 12px;
+    margin-top: 20px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--tag-color, var(--color-darker-gray)) !important;
+    text-decoration: none !important;
+    letter-spacing: -0.01em;
+    border: 2px solid var(--color-border);
+    border-radius: 24px;
+}
+
+/* ===================================================
+   Article Content Layout
+=================================================== */
+.gh-content .gh-article-header {
+    grid-row-start: 1;
+    grid-column: 4 / span 9;
+    margin-top: 0;
+    margin-bottom: clamp(4.8rem, 1.43vw + 4.11rem, 6.4rem);
+}
+
+.gh-article-header {
+    position: relative; /* Ensures the child .gh-article-type is positioned relative to this */
+}
+
+.gh-article-header .gh-article-type {
+    position: absolute;
+    width: 100%;
+    top: -40px; /* Adjust as needed */
+    left: 0; /* Adjust as needed */
+    margin: 0;
+    padding: 5px 0;
+    /*border-bottom: 1px solid var(--color-border);*/
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: var(--color-secondary-text);
+    display: inline-block;
+}
+
+
+/* ===================================================
+   Navigation
+=================================================== */
+.gh-navigation {
+    grid-column: 1 / span 12;
+    font-size: clamp(2rem, 1.7rem + 0.9375vw, 3.2rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.has-serif-font:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-navigation {
+    font-family: var(--gh-font-heading, var(--font-serif));
+}
+
+.has-mono-font:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-navigation {
+    font-family: var(--gh-font-heading, var(--font-mono));
+}
+
+/* ===================================================
+   Comments
+=================================================== */
+.gh-comments {
+    margin-top: clamp(4.8rem, 4.64vw + 2.57rem, 10rem);
+}
+
+.gh-comments .gh-comments-title {
+    margin-bottom: 48px;
+    font-weight: 800;
+}
+
+.has-serif-font:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-comments-title {
+    font-family: var(--gh-font-heading, var(--font-serif));
+}
+
+.has-mono-font:not([class*=" gh-font-heading"]):not([class^="gh-font-heading"]) .gh-comments-title {
+    font-family: var(--gh-font-heading, var(--font-mono));
+}
+
+/* ===================================================
+   Subscribe Section
+=================================================== */
+.gh-subscribe-input {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 480px;
+    height: 52px;
+    padding: 0 8px 0 24px;
+    margin-top: 40px;
+    font-size: 1.7rem;
+    color: var(--color-secondary-text);
+    cursor: pointer;
+    background-color: var(--color-border);
+    border-radius: 72px;
+}
+
+.gh-subscribe-input .gh-btn {
+    font-weight: 700;
+}
+
+/* ===================================================
+   Archive
+=================================================== */
+:is(.tag-template, .author-template) .gh-article {
+    margin-bottom: 80px;
+}
+
+.gh-author-image {
+    width: 96px;
+    height: 96px;
+    margin-bottom: 24px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+.gh-author-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gh-author-meta {
+    margin-top: 16px;
+    font-size: 1.8rem;
+    color: var(--color-secondary-text);
+}
+
+.gh-author-location {
+    margin-bottom: 6px;
+}
+
+.gh-author-social {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.gh-author-social-link {
+    line-height: 0;
+}
+
+/* ===================================================
+   Footer
+=================================================== */
+.gh-foot {
+
+    padding-top: clamp(2.67rem, 1.52vw + 2.06rem, 4rem);
+    padding-bottom: clamp(2.67rem, 1.52vw + 2.06rem, 4rem);
+    white-space: wrap;
+}
+
+.gh-foot-inner {
+    display: flex;
+    width: var(--max-article-width);
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    padding-top: 16px;
+    border-top: 1px solid var(--color-border);
+}
+
+.gh-foot-menu {
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.gh-copyright {
+    font-size: 1.4rem;
+}
+
+@media (max-width: 767px) {
+  /* Force horizontal nav instead of column layout */
+  .gh-foot-menu .nav {
+    flex-direction: row !important;
+  }
+  /* Remove any extra top margin on list items */
+  .gh-foot-menu .nav li+li {
+    margin-top: 0 !important;
+  }
+  /* Reinstate the dot separator */
+  .gh-foot-menu .nav li+li:before {
+    display: inline !important;
+  }
+}
+
+/* ===================================================
+   Section Header
+=================================================== */
+.section-header {
+    display: flex;
+    justify-content: space-between; /* Push title left, link right */
+    align-items: center; /* Keep everything vertically aligned */
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 2rem;
+    padding-bottom: 0.8rem; /* Add a little spacing for better visuals */
+}
+
+.section-title {
+    margin: 0;
+}
+
+/* ===================================================
+   Portfolio Section
+=================================================== */
+.portfolio {
+    padding: clamp(3rem, 5vw, 6rem) 0;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-auto-rows: auto;
+    padding-top: 2rem;
+    gap: var(--gap);
+    margin: 0 auto;
+    max-width: var(--container-width);
+}
+
+.portfolio-card:nth-child(1),
+.portfolio-card:nth-child(2) {
+    grid-column: span 3;
+}
+
+.portfolio-card:nth-child(3),
+.portfolio-card:nth-child(4),
+.portfolio-card:nth-child(5) {
+    grid-column: span 2;
+}
+
+.portfolio-card {
+    background: transparent;
+    transition: transform 0.2s ease;
+}
+
+.portfolio-image {
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+}
+
+.portfolio-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.portfolio-content {
+    padding-top: 1.5rem;
+    text-align: left;
+}
+
+.portfolio-title {
+    font-size: 2.4rem;
+    font-weight: 600;
+    margin: 0.5rem 0;
+    color: var(--color-darker-gray);
+}
+
+.portfolio-excerpt {
+    font-size: 1.8rem;
+    line-height: 1.4;
+    color: var(--color-secondary-text);
+}
+
+@media (max-width: 991px) {
+    .portfolio-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .portfolio-card:nth-child(1),
+    .portfolio-card:nth-child(2) {
+        grid-column: span 2;
+    }
+    .portfolio-card:nth-child(3),
+    .portfolio-card:nth-child(4),
+    .portfolio-card:nth-child(5) {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 767px) {
+    
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+    .portfolio-card {
+        grid-column: span 1;
+    }
+    .portfolio-image {
+        aspect-ratio: 16/9;
+    }
+}
+
+@media (min-width: 768px) {
+  /* Special rule: Two-column portfolio grid for projects.hbs */
+  .portfolio-grid.two-col {
+      grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  /* Ensure portfolio cards do not span extra columns */
+  .portfolio-grid.two-col .portfolio-card {
+      grid-column: auto !important;
+  }
+  
+  /* Ensure portfolio cards do not span extra columns */
+  .portfolio-grid.two-col .portfolio-card {
+    grid-column: auto !important;
+  }
+}
+
+/* Projects Page Overrides for projects.hbs: Use full container width (1140px) */
+.projects-article .gh-article-header,
+.projects-article .gh-content,
+.projects-article .gh-article-meta,
+.projects-article .gh-article-footer {
+    max-width: var(--container-width);  /* 1140px as defined in CSS variable */
+}
+
+/* ===================================================
+   Writings Section
+=================================================== */
+.writings {
+    padding: clamp(3rem, 5vw, 6rem) 0;
+}
+
+.writings-grid {
+    display: flex;
+    padding-top: 2rem;
+    flex-direction: column;
+    gap: var(--gap);
+    margin: 0 auto;
+}
+
+.writing-card {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.writing-content {
+    flex: 1;
+    max-width: calc(100% - 300px - var(--gap));
+}
+
+.writing-title {
+    font-size: 2.4rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--color-darker-gray);
+}
+
+.writing-excerpt {
+    font-size: 1.8rem;
+    line-height: 1.4;
+    color: var(--color-secondary-text);
+}
+
+.writing-meta {
+    font-size: 1.4rem;
+    color: var(--color-secondary-text);
+    margin-top: 1rem;
+}
+
+.writing-media {
+    width: 300px;
+    flex-shrink: 0;
+    align-items: flex-start;
+    margin-left: var(--gap);
+}
+
+.writing-media img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+}
+
+.writing-link {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 100%;
+}
+
+@media (max-width: 767px) {
+    
+    .writing-link,
+    .writing-card {
+        flex-direction: column;
+    }
+    .writing-content {
+        max-width: 100%;
+        padding-top: 15px;
+    }
+    .writing-title {
+        margin-top: 5px;
+    }
+    .writing-media {
+        width: 100%;
+        margin: 0;
+        order: -1;
+    }
+}
+
+/* ===================================================
+   Media Queries Consolidation
+=================================================== */
+@media (max-width: 1032px) {
+    :root {
+        --container-width: 960px;
+    }
+}
+
+@media (max-width: 991px) {
+    :root {
+        --container-width: 728px;
+    }
+    .gh-canvas > *,
+    .page-template .no-image :is(.gh-article-title, .gh-article-excerpt) {
+        grid-column: 3 / span 8;
+    }
+    .gh-canvas > .kg-width-wide {
+        grid-column: 3 / span 10;
+    }
+}
+
+@media (max-width: 767px) {
+    :root {
+        --container-width: 100%;
+    }
+    .gh-canvas > *,
+    .page-template .no-image :is(.gh-article-title, .gh-article-excerpt) {
+        grid-column: 2 / span 10;
+    }
+    .gh-canvas > .kg-width-wide {
+        grid-column: 1 / span 12;
+    }
+}
+
+@media (max-width: 480px) {
+    .gh-canvas > *,
+    .page-template .no-image :is(.gh-article-title, .gh-article-excerpt) {
+        grid-column: 1 / span 12;
+    }
+}
+
+
+
+/* ==========================================================================
+   PAGE-TEMPLATE OVERRIDES — UNIFY PAGES AND POSTS
+   (Place these rules AFTER all the Ghost/CMS defaults)
+========================================================================== */
+
+/* 1. Override the page-specific main padding 
+   (Ghost defaults set a much smaller padding on pages) */
+.page-template .gh-main {
+  padding-top: clamp(4.8rem, 4rem + 2.5vw, 8rem) !important;
+  padding-bottom: clamp(4.8rem, 4rem + 2.5vw, 8rem) !important;
+}
+
+
+/* 3. Force page-template content to use the same grid as posts */
+.page-template .gh-canvas > * {
+  grid-column: main !important;
+}
+
+/* 5. Override the margin-top on the article header (the one you mentioned) */
+.page-template .gh-article-header {
+  margin-top: 0 !important;
+}
+
+/* 6. (Optional) Reset any extra margins on direct children of gh-main */
+.page-template .gh-main > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* ===================================================
+   Modal Overlay and Content Styling
+=================================================== */
+.modal-overlay {
+  background: var(--background-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* semi-transparent overlay */
+  display: none; /* hidden by default */
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal-content {
+  background: var(--background-color);
+  max-width: var(--max-article-width);
+  width: 90% !important;
+  padding: 3rem;
+  border-radius: 6px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  position: relative;
+  text-align: left;
+}
+
+/* Modal Close Button */
+.modal-close {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background: transparent;
+  border: none;
+  font-size: 4rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+/* Form Styling */
+.modal-content h2{
+  margin-top: 0 !important;
+  margin-bottom: 2rem;
+  font-weight: 800;
+}
+
+/* container styling: show it immediately and center it */
+.em-ad {
+  display: block;
+  font-weight: normal;
+  margin-top: 12px;
+  text-align: center;
+}
+
+

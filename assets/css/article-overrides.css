@@ -1,0 +1,287 @@
+/* ============================================
+   Article Styling Overrides
+   Purpose: Enhance post and page readability with legible typography and spacing.
+============================================ */
+
+/* Constrain main article elements for optimal readability */
+.gh-article-header,
+.gh-content,
+.gh-article-meta,
+.gh-article-footer {
+    max-width: var(--max-article-width);
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Article Title: Enhanced typography and spacing */
+/* Default (screens ≥ 768px): use max value from clamp(3.2rem, 5vw, 4.2rem) */
+.gh-article-title {
+    font-size: 4.2rem;
+    font-weight: 800;
+    line-height: 1.2;
+    text-align: left;
+}
+
+/* Article Excerpt: Adjusted for clarity */
+/* Default from clamp(1.8rem, 2vw, 2.2rem) */
+.gh-article-excerpt {
+    font-size: 2.2rem;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--color-secondary-text);
+}
+
+/* Responsive Cover Image: Ensure images stay within content bounds */
+.gh-article-header img {
+    max-width: var(--max-article-width);
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 6px;
+}
+
+/* Main Content Styling: Improved readability with refined font size and line-height */
+/* Default from clamp(1.8rem, 2vw, 2rem) */
+.gh-content {
+    font-size: 2rem;
+    line-height: 1.58;
+    color: var(--color-primary-text);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Spacing for paragraphs immediately following headings */
+/* Default from clamp(1.2rem, 3vw, 1.8rem) */
+.gh-content h1 + p,
+.gh-content h2 + p,
+.gh-content h3 + p,
+.gh-content h4 + p,
+.gh-content h5 + p {
+    margin-top: 1.8rem;
+}
+
+/* Article Meta Info: Clear and accessible styling */
+.gh-article-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 1.4rem;
+    color: var(--color-secondary-text);
+}
+
+/* Article Footer: Sufficient separation from content */
+.gh-article-footer {
+    margin-top: 5rem;
+}
+
+/* ============================================
+   Typography Overrides for Article Content
+============================================ */
+
+/* -------------------------------
+   Headings
+------------------------------- */
+.gh-content h1,
+.gh-content h2,
+.gh-content h3,
+.gh-content h4,
+.gh-content h5,
+.gh-content h6 {
+    color: var(--color-primary-text);
+    text-rendering: optimizeLegibility;
+    font-weight: 700;
+    margin-top: 5.6rem;
+    margin-bottom: 1.6rem;
+}
+
+.gh-content h1 {
+    /* font-family: "Playfair Display", var(--font-serif); */
+    font-size: 48px;
+    margin-bottom: 8px;
+}
+
+.gh-content h2 {
+    /* font-family: "Lato", var(--font-sans); */
+    font-size: 32px;
+    line-height: 1.25;
+    letter-spacing: -0.03em;
+    margin-bottom: 16px;
+}
+
+.gh-content h3 {
+    /* font-family: var(--font-sans); */
+    font-size: 28px;
+    margin-top: 4rem;
+    margin-bottom: 1.2rem;
+}
+
+/* -------------------------------
+   Paragraphs
+------------------------------- */
+.gh-content p {
+    /* font-family: 'Lora', var(--font-serif); */
+    /* font-size: 21px; */
+    line-height: 1.58;
+    letter-spacing: -0.03px;
+    margin-top: 3rem;  /* default max value */
+    margin-bottom: 0;
+}
+
+/* -------------------------------
+   Blockquotes
+------------------------------- */
+.gh-content blockquote {
+    /* font-family: "Playfair Display", var(--font-serif); */
+    font-size: 2.8rem;  /* default max from clamp(2.5rem, 2.5vw, 2.8rem) */
+    color: rgba(0, 0, 0, 0.68);
+    margin-top: 3.5rem;  /* default max from clamp(3rem, 2.5vw, 4.8rem) */
+    padding-left: 30px;
+    border-left: 4px solid rgba(0, 0, 0, 0.15);
+}
+
+/* -------------------------------
+   Inline Code
+------------------------------- */
+.gh-content code {
+    /* font-family: Menlo, Monaco, "Courier New", Courier, monospace; */
+    background: rgba(0, 0, 0, 0.05);
+    padding: 3px 5px;
+    font-size: 18px;
+    border-radius: 2px;
+}
+
+/* -------------------------------
+   Preformatted Text
+------------------------------- */
+.gh-content pre {
+    background: rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    /* font-family: Menlo, Monaco, "Courier New", Courier, monospace; */
+    font-size: 16px;
+    overflow-x: auto;
+}
+
+/* ============================================
+   Additional Typography Enhancements
+============================================ */
+
+/* Custom Text Selection: Enhances user experience when selecting text */
+.gh-content ::selection {
+    background-color: lavender;
+}
+
+
+
+/* Link Hover State: Underline links on hover for better interactivity */
+.gh-content a:hover {
+    text-decoration: underline;
+}
+
+/* ============================================
+   Fix Inherited Grid Constraints
+============================================ */
+/* Override Ghost’s grid settings for posts and pages */
+.gh-canvas {
+    grid-column: 1 / -1 !important;
+    display: block;
+}
+
+/* ============================================
+   Media & Figure Enhancements
+============================================ */
+
+/* Ensure figures have no extra margin or padding */
+.gh-content figure {
+    margin: 0;
+    padding: 0;
+}
+
+/* Style figcaptions for a clean, centered look */
+figcaption {
+    font-size: 1.4rem;
+    color: var(--color-secondary-text);
+    text-align: center;
+    margin-top: 10px;
+    padding: 0;
+}
+
+/* ============================================
+   List and Horizontal Rule Styling
+============================================ */
+
+/* Unordered and Ordered Lists: Consistent spacing and indentation */
+.gh-content ul,
+.gh-content ol {
+    margin-top: 2rem;
+    margin-bottom: 0;
+    margin-left: 30px;
+    padding-left: 2rem;
+    line-height: 1.58;
+}
+
+/* Horizontal Rules: Clean, subtle dividers */
+.gh-content hr {
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: clamp(2.8rem, 6vw, 4.2rem) 0;
+}
+
+/* ============================================
+   Polishing and Responsive Tuning
+============================================ */
+
+/* For very small screens (max-width: 480px) */
+@media (max-width: 480px) {
+    /* Adjust Heading Sizes */
+    .gh-content h1 {
+        font-size: clamp(2.8rem, 6vw, 3.5rem);
+    }
+    .gh-content h2 {
+        font-size: clamp(2.2rem, 5vw, 3rem);
+    }
+    .gh-content h3 {
+        font-size: clamp(2rem, 5vw, 2.6rem);
+    }
+    
+    /* Refine Spacing for Compact Screens */
+    .gh-content p,
+    .gh-content ul,
+    .gh-content ol,
+    .gh-content hr {
+        margin-top: clamp(1.8rem, 4vw, 3rem);
+    }
+}
+
+/* ============================================
+   Adaptive Overrides for Screens below 768px
+   (Adaptivity kicks in only when viewport < 768px)
+============================================ */
+@media (max-width: 768px) {
+    .gh-article-title {
+        font-size: clamp(3.2rem, 5vw, 4.2rem);
+    }
+    .gh-article-excerpt {
+        font-size: clamp(1.8rem, 2vw, 2.2rem);
+    }
+    .gh-content {
+        font-size: clamp(1.8rem, 2vw, 2rem);
+    }
+    .gh-content p {
+        margin-top: clamp(2.6rem, 6vw, 3rem);
+    }
+    .gh-content h1 + p,
+    .gh-content h2 + p,
+    .gh-content h3 + p,
+    .gh-content h4 + p,
+    .gh-content h5 + p {
+        margin-top: clamp(1.2rem, 3vw, 1.8rem);
+    }
+    .gh-content blockquote {
+        font-size: clamp(2.5rem, 2.5vw, 2.8rem);
+        margin-top: clamp(2.8rem, 2.5vw, 3.5rem);
+    }
+}
+

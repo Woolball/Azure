@@ -1,0 +1,191 @@
+{{!< default}}
+
+<section class="gh-about gh-outer has-side-about">
+    <div class="gh-about-inner gh-inner">
+        {{#match @custom.hero_layout "Image Right"}}
+            <!-- Image on the right -->
+            <div class="gh-about-content">
+                <div class="gh-about-content-inner">
+                    {{#if @custom.primary_header}}
+                        <h1 class="gh-about-primary">{{{@custom.primary_header}}}</h1>
+                    {{/if}}
+                    {{#if @custom.secondary_header}}
+                        <p class="gh-about-secondary">{{{@custom.secondary_header}}}</p>
+                    {{/if}}
+                    {{#if @site.members_enabled}}
+                        {{#unless @member}}
+                            <div class="gh-subscribe-input" data-portal>
+                                jamie@example.com
+                                <span class="gh-btn gh-primary-btn">Subscribe</span>
+                            </div>
+                        {{/unless}}
+                    {{/if}}
+                </div>
+            </div>
+            {{#if @site.cover_image}}
+                <img class="gh-about-image" src="{{@site.cover_image}}" alt="{{@site.title}}">
+            {{/if}}
+        {{else}}
+            <!-- Image on the left (Default) -->
+            {{#if @site.cover_image}}
+                <img class="gh-about-image" src="{{@site.cover_image}}" alt="{{@site.title}}">
+            {{/if}}
+            <div class="gh-about-content">
+                <div class="gh-about-content-inner">
+                    {{#if @custom.primary_header}}
+                        <h1 class="gh-about-primary">{{{@custom.primary_header}}}</h1>
+                    {{/if}}
+                    {{#if @custom.secondary_header}}
+                        <p class="gh-about-secondary">{{{@custom.secondary_header}}}</p>
+                    {{/if}}
+                    
+                    
+                    <!-- CTAs -->
+			{{#if @custom.primary_cta_label}}
+			  <div class="gh-header-buttons">
+			    {{#if @custom.primary_cta_link}}
+  <a href="{{@custom.primary_cta_link}}" class="gh-btn gh-primary-btn contact-me-btn">
+    {{@custom.primary_cta_label}}
+  </a>
+{{else}}
+  <a href="#" class="gh-btn gh-primary-btn contact-me-btn">
+    {{@custom.primary_cta_label}}
+  </a>
+{{/if}}
+			    {{#if @custom.secondary_cta_label}}
+			      {{#if @custom.secondary_cta_link}}
+				<a href="{{@custom.secondary_cta_link}}" class="gh-btn gh-secondary-btn">{{@custom.secondary_cta_label}}</a>
+			      {{else}}
+				<a href="#" class="gh-btn gh-secondary-btn">{{@custom.secondary_cta_label}}</a>
+			      {{/if}}
+			    {{/if}}
+			  </div>
+			{{else}}
+			  {{#if @custom.secondary_cta_label}}
+			    <div class="gh-header-buttons">
+			      {{#if @custom.secondary_cta_link}}
+				<a href="{{@custom.secondary_cta_link}}" class="gh-btn gh-secondary-btn">{{@custom.secondary_cta_label}}</a>
+			      {{else}}
+				<a href="#" class="gh-btn gh-secondary-btn">{{@custom.secondary_cta_label}}</a>
+			      {{/if}}
+			    </div>
+			  {{/if}}
+			{{/if}}
+
+                    
+                    {{#if @site.members_enabled}}
+                        {{#unless @member}}
+                            <div class="gh-subscribe-input" data-portal>
+                                jamie@example.com
+                                <span class="gh-btn gh-primary-btn">Subscribe</span>
+                            </div>
+                        {{/unless}}
+                    {{/if}}
+                </div>
+            </div>
+        {{/match}}
+    </div>    
+</section>
+
+<main class="gh-main gh-outer">
+
+
+{{#get "pages" filter="tag:hash-portfolio-case" limit="5" include="feature_image,custom_excerpt" order="published_at desc"}}
+  {{#if pages.length}}
+    <section class="gh-section portfolio">
+      <div class="gh-inner">
+        {{#if @custom.portfolio_title}}
+        	<div class="section-header">
+            		<h2 class="section-title">{{@custom.portfolio_title}}</h2>
+            		{{#if @custom.portfolio_link}}
+            			<a href="{{@custom.portfolio_link}}" class="see-all-link">See all &gt;</a>
+            		{{/if}}
+          	</div>
+        {{/if}}
+        <div class="portfolio-grid">
+          {{#foreach pages}}
+            <article class="portfolio-card">
+              <a href="{{url}}" class="portfolio-link">
+                <div class="portfolio-image">
+                  {{#if feature_image}}
+                    <img 
+                      srcset="{{img_url feature_image size="s"}} 300w,
+                              {{img_url feature_image size="m"}} 600w"
+                      sizes="(max-width: 767px) 100vw, 50vw"
+                      src="{{img_url feature_image size="m"}}"
+                      alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                      loading="lazy"
+                    >
+                  {{else}}
+                    <div class="portfolio-image-placeholder"></div>
+                  {{/if}}
+                </div>
+                <div class="portfolio-content">
+                  <h3 class="portfolio-title">{{title}}</h3>
+                  {{#if custom_excerpt}}
+                    <div class="portfolio-excerpt">{{custom_excerpt}}</div>
+                  {{/if}}
+                </div>
+              </a>
+            </article>
+          {{/foreach}}
+        </div>
+      </div>
+    </section>
+  {{/if}}
+{{/get}}
+
+
+
+{{#get "posts" limit="4" include="feature_image,excerpt"}}
+  {{#if posts.length}}
+    <section class="gh-section writings">
+      <div class="gh-inner">
+      	{{#if @custom.writings_title}}
+        	<div class="section-header">
+            		<h2 class="section-title">{{@custom.writings_title}}</h2>
+            		{{#if @custom.writings_link}}
+            			<a href="{{@custom.writings_link}}" class="see-all-link">See all &gt;</a>
+            		{{/if}}
+          	</div>
+        {{/if}}
+        <div class="writings-grid">
+          {{#foreach posts}}
+            <article class="writing-card">
+              <a href="{{url}}" class="writing-link">
+                <div class="writing-content">
+                  <h3 class="writing-title">{{title}}</h3>
+                  {{#if excerpt}}
+                    <div class="writing-excerpt">{{excerpt}}</div>
+                  {{/if}}
+                  <div class="writing-meta">
+                    <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="MMM D, YYYY"}}</time>
+                  </div>
+                </div>
+                <div class="writing-media">
+                  {{#if feature_image}}
+                    <img 
+                      srcset="{{img_url feature_image size="s"}} 300w,
+                              {{img_url feature_image size="m"}} 600w"
+                      sizes="(max-width: 767px) 100vw, 50vw"
+                      src="{{img_url feature_image size="m"}}"
+                      alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                      loading="lazy"
+                    >
+                  {{else}}
+                    <div class="writing-media-placeholder"></div>
+                  {{/if}}
+                </div>
+              </a>
+            </article>
+          {{/foreach}}
+        </div>
+      </div>
+    </section>
+  {{/if}}
+{{/get}}
+
+
+</main>
+
+{{#contentFor "body_class"}} has-side-about{{/contentFor}}

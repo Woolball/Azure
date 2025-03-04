@@ -1,0 +1,153 @@
+{
+    "name": "azure",
+    "description": "A Ghost theme for professional portfolios",
+    "version": "1.0.0",
+    "private": true,
+    "engines": {
+        "ghost": ">=5.0.0"
+    },
+    "license": "MIT",
+    "author": {
+        "name": "Ammar Halabi",
+        "email": "ammar.halabi@gmail.com",
+        "url": "https://halabi.me"
+    },
+    "keywords": [
+        "ghost",
+        "theme",
+        "ghost-theme",
+        "portfolio"
+    ],
+    "docs": "https://github.com/Woolball/Azure/readme.md",
+    "config": {
+        "posts_per_page": 6,
+        "image_sizes": {
+            "xs": {
+                "width": 150
+            },
+            "s": {
+                "width": 300
+            },
+            "m": {
+                "width": 720
+            },
+            "l": {
+                "width": 960
+            },
+            "xl": {
+                "width": 1200
+            },
+            "xxl": {
+                "width": 2000
+            }
+        },
+        "card_assets": true,
+        "custom": {
+            "background_color": {
+                "type": "color",
+                "default": "#ffffff"
+            },
+            "navigation_layout": {
+                "type": "select",
+                "options": ["Logo on the left", "Logo in the middle", "Stacked"],
+                "default": "Logo on the left"
+            },
+            "typography": {
+                "type": "select",
+                "options": ["Modern sans-serif", "Elegant serif", "Consistent mono"],
+                "default": "Modern sans-serif"
+            },
+            "footer_text": {
+                "type": "text"
+            },
+            "primary_header": {
+                "type": "text",
+                "default": "Welcome to my site",
+                "group": "homepage"
+            },
+            "secondary_header": {
+                "type": "text",
+                "default": "See my work and reach out to collaborate!",
+                "group": "homepage"
+            },
+    	    "hero_layout": {
+    		"type": "select",
+    		"options": ["Image Left", "Image Right"],
+    		"default": "Image Left",
+    		"group": "homepage"
+		},
+	    "navigation_alignment": {
+    		"type": "select",
+    		"options": ["Left", "Right"],
+    		"default": "Left",
+    		"group": "navigation"
+		},
+	    "primary_cta_label": {
+                "type": "text",
+                "default": "Let's talk!",
+                "group": "homepage"
+            },
+            "primary_cta_link": {
+                "type": "text",
+                "default": "/contact",
+                "group": "homepage"
+            },
+            "secondary_cta_label": {
+                "type": "text",
+                "default": "My services",
+                "group": "homepage"
+            },
+            "secondary_cta_link": {
+                "type": "text",
+                "default": "/services",
+                "group": "homepage"
+            },
+	    "portfolio_title": {
+    		"type": "text",
+    		"default": "Projects",
+    		"group": "homepage",
+    		"label": "Portfolio section title"
+		},
+	    "portfolio_link": {
+    		"type": "text",
+    		"default": "/projects",
+    		"group": "homepage",
+    		"label": "Portfolio page url"
+		},
+	    "writings_title": {
+    		"type": "text",
+    		"default": "Writing",
+    		"group": "homepage",
+    		"label": "Writings section title"
+		},
+	    "writings_link": {
+    		"type": "text",
+    		"default": "/writing",
+    		"group": "homepage",
+    		"label": "Writings page url"
+		}
+        }
+    },
+    "scripts": {
+        "dev": "gulp",
+        "test": "gscan .",
+        "zip": "gulp zip"
+    },
+    "devDependencies": {
+        "@tryghost/shared-theme-assets": "2.5.0",
+        "autoprefixer": "10.4.20",
+        "beeper": "2.1.0",
+        "cssnano": "7.0.6",
+        "gscan": "4.46.0",
+        "gulp": "5.0.0",
+        "gulp-concat": "2.6.1",
+        "gulp-livereload": "4.0.2",
+        "gulp-postcss": "10.0.0",
+        "gulp-uglify": "3.0.2",
+        "gulp-zip": "5.1.0",
+        "ordered-read-streams": "2.0.0",
+        "postcss": "8.5.1",
+        "postcss-easy-import": "4.0.0",
+        "pump": "3.0.2"
+    }
+}

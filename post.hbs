@@ -1,0 +1,36 @@
+{{!< default}}
+
+<main class="gh-main gh-outer">
+  <div class="gh-inner">
+    {{#post}}
+      <article class="gh-article {{post_class}}">
+        <header class="gh-article-header">
+          {{#if @custom.writings_title}}
+            <p class="gh-article-type">{{@custom.writings_title}}</p>
+          {{/if}}
+          <h1 class="gh-article-title">{{title}}</h1>
+          {{#if custom_excerpt}}
+            <p class="gh-article-excerpt">{{custom_excerpt}}</p>
+          {{/if}}
+          {{#if feature_image}}
+            {{> "feature-image"}}
+          {{/if}}
+        </header>
+
+        <section class="gh-content">
+          {{content}}
+        </section>
+        
+
+        {{!-- (Optional) Meta / Comments section goes here --}}
+        {{#if comments}}
+          <div class="gh-comments">
+            <h2 class="gh-comments-title">{{comment_count empty="" single="comment" plural="comments"}}</h2>
+            {{comments title="" count=false}}
+          </div>
+        {{/if}}
+      </article>
+    {{/post}}
+  </div>
+</main>
+
