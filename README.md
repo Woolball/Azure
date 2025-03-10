@@ -10,28 +10,86 @@ Azure is a minimal theme for [Ghost](https://github.com/TryGhost/Ghost) focused 
 2. Log into Ghost and navigate to the `Theme` settings
 3. Change theme by uploading the downloaded ZIP file
 
-## Usage
+## Features
 
-Customize the theme by navigating to `Design & branding` through the following variables:
+- Customizable header with primary and secondary text options
+- Flexible hero layout with configurable image positioning
+- Call-to-Action (CTA) buttons with customizable text and links
+- Portfolio section for showcasing your projects
+- Writing section for your blog posts
+- Multiple navigation layout options
+- Custom typography options
 
-- **Navigation**
-  - Layout configuration
-  - Alignment options
+## Content Setup
 
-- **Header**
-  - Cover image positioning
-  - Primary and secondary header text
+### Projects/Portfolio
 
-- **Call-to-Action (CTA)**
-  - Primary CTA text and link
-  - Secondary CTA text and link
-  - *Note: Create corresponding pages for CTA links (e.g., contact page, services page)*
+Projects are implemented as **pages** with the tag `#portfolio-case`:
 
-- **Page Sections**
-  - Customize home page section titles (portfolio and writings)
-  - Configure links to full portfolio and writings pages
+1. Create a page in Ghost for each project
+2. Add the `#portfolio-case` tag to the page
+3. Set a featured image for visual appeal
+4. Write a custom excerpt that will appear in the project listings
+5. Projects are ordered by their published date on both the home page and the projects page
 
-Optional page templates for portfolio and writings are available and can be linked from the homepage by populating the respective title variables.
+### Writing/Blog Posts
+
+Writings are implemented as regular **posts**:
+
+1. Create posts normally in Ghost
+2. No special tags are required
+3. Posts are ordered by their published date on both the home page and the writing page
+
+### Template Pages
+
+To create dedicated listing pages for projects and writings:
+
+1. **Projects Page**: Create a page with the URL `/projects`
+   - The theme automatically applies the project listing template
+   - You can add a title and content to this page - the project listings will appear below
+   
+2. **Writing Page**: Create a page with the URL `/writing`
+   - The theme automatically applies the writing listing template
+   - Any content you add to this page will appear above the post listings
+
+## Theme Configuration
+
+Customize the theme by navigating to `Design & branding` in Ghost. The following options are available:
+
+### General Settings
+
+- **Background Color**: Set the main background color for your site
+- **Typography**: Choose from:
+  - Modern sans-serif (default)
+  - Elegant serif 
+  - Consistent mono
+- **Footer Text**: Customize the text in the footer (defaults to site name + current year)
+
+### Navigation
+
+- **Navigation Layout**: Choose from Logo on the left (default), Logo in the middle, or Stacked
+- **Navigation Alignment**: Set to Left (default) or Right
+
+### Homepage Settings
+
+- **Hero Layout**: Choose from Image Left (default) or Image Right
+- **Primary Header**: Main heading text on the homepage
+- **Secondary Header**: Subheading text on the homepage
+
+### Call-to-Action Buttons
+
+- **Primary CTA Label**: Text for the main CTA button
+- **Primary CTA Link**: URL for the main CTA button (e.g., `/contact`)
+- **Secondary CTA Label**: Text for the secondary CTA button
+- **Secondary CTA Link**: URL for the secondary CTA button (e.g., `/services`)
+*Note: Create corresponding pages for CTA links (e.g., contact page, services page)*
+
+### Section Settings
+
+- **Portfolio Section Title**: Customize the portfolio section heading (default: "Projects")
+- **Portfolio Page URL**: Set the URL for the full portfolio page (default: "/projects")
+- **Writings Section Title**: Customize the writings section heading (default: "Writing")
+- **Writings Page URL**: Set the URL for the full writings page (default: "/writing")
 
 ## Development
 
