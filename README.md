@@ -82,6 +82,7 @@ Customize the theme by navigating to `Design & branding` in Ghost. The following
 - **Primary CTA Link**: URL for the main CTA button (e.g., `/contact`)
 - **Secondary CTA Label**: Text for the secondary CTA button
 - **Secondary CTA Link**: URL for the secondary CTA button (e.g., `/services`)
+
 *Note: Create corresponding pages for CTA links (e.g., contact page, services page)*
 
 ### Section Settings
