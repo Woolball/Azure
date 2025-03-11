@@ -91,6 +91,13 @@ Customize the theme by navigating to `Design & branding` in Ghost. The following
 - **Writings Section Title**: Customize the writings section heading (default: "Writing")
 - **Writings Page URL**: Set the URL for the full writings page (default: "/writing")
 
+## Optional Features
+
+Azure includes support for several optional features that can be enabled through Ghost's code injection:
+
+- [Contact Modal](docs/features/contact-modal.md) - Display a contact form when users click on your CTA buttons
+- [Emoji to Icons Conversion](docs/features/emoji-to-icons.md) - Automatically convert emojis to Bootstrap icons
+
 ## Development
 
 This theme uses Gulp and PostCSS for style compilation. Ensure you have the following installed:
