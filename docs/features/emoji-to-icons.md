@@ -1,8 +1,9 @@
 # Emoji to Icons Conversion
 
-Azure includes an optional feature to automatically convert emojis in your content to Bootstrap icons. This provides a consistent visual style and better accessibility.
+Azure includes an optional feature to automatically convert emojis in your content to Bootstrap icons. This provides a consistent visual style and better accessibility. See this example:
 
-![Emoji to Icons Example](https://github.com/user-attachments/assets/94356e52-7b5e-4c74-9cd7-8e943cbcb1b3)
+![Emoji to Icons Example](https://github.com/user-attachments/assets/0c77d5e3-aeb2-4079-8f22-a28afad44cef)
+
 
 
 ## Setup Instructions
